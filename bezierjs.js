@@ -1736,10 +1736,11 @@ ctx.beginPath();
 ctx.moveTo((x[0] + 1) * 183, (y[0] + 1) * 212);
 let i = 0;
 function step() {
-  ctx.bezierCurveTo((x[i] + 1) * 183, (y[i] + 1) * 212, (x[i + 2] + 1) * 183, (y[i + 2] + 1) * 212,
-    (x[i + 2] + 1) * 183, (y[i + 2] + 1) * 212);
-  ctx.stroke();
-  i += 2;
+  if(i < xl - 1) { 
+    ctx.bezierCurveTo((x[i] + 1) * 183, (y[i] + 1) * 212, (x[i + 1] + 1) * 183, (y[i + 1] + 1) * 212,(x[i + 1] + 1) * 183, (y[i + 1] + 1) * 212);
+    ctx.stroke(); 
+  }
+  i++;
 }
-let timedId = setInterval(step, 10);
-setTimeout(() => {clearInterval(timedId)}, 6000);
+let timedId = setInterval(step, 5);
+setTimeout(() => {clearInterval(timedId)}, 5000);
